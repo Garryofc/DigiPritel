@@ -207,18 +207,18 @@ def kripl2(talking_queue):
 
     pygame.quit()
 
-def voice_command_processor(ask=False):
-    with sr.Microphone(device_index=2) as source:
-        if(ask):
-            audio_playback(ask)
-        audio = r.listen(source,phrase_time_limit=4) #odposlech z mikrofonu
-        text = '' #preset pro řečenou frázi
-        text=r.recognize_google(audio, language='cs')
-        if text == '': #pokud bude ticho tak bude ai ignorovat
-            print('')
-        else:
-            print(f"User: {text}") #zobrazí frázi řečenou uživatelem
-        return text.lower()
+# def voice_command_processor(ask=False):
+#     with sr.Microphone(device_index=2) as source:
+#         if(ask):
+#             audio_playback(ask)
+#         audio = r.listen(source,phrase_time_limit=4) #odposlech z mikrofonu
+#         text = '' #preset pro řečenou frázi
+#         text=r.recognize_google(audio, language='cs')
+#         if text == '': #pokud bude ticho tak bude ai ignorovat
+#             print('')
+#         else:
+#             print(f"User: {text}") #zobrazí frázi řečenou uživatelem
+#         return text.lower()
 
 def audio_playback(text, talking_queue):
     language = 'cs'#jazyk hlasové výslovnosti
@@ -259,7 +259,7 @@ def execute_voice_command(text, talking_queue): #zařizuje možnost odpovědí h
 def kripl(talking_queue):
     while True:
         if config.VOICE == True:
-            command = voice_command_processor()
+            command = "ahoj, jak se máš?"
             execute_voice_command(command, talking_queue)
         elif config.VOICE == False:
             message = input('[?] >> ')
