@@ -206,8 +206,10 @@ def kripl2(talking_queue):
 
     pygame.quit()
 
+
+device = sr.Microphone(device_index=2)
 def voice_command_processor(ask=False):
-    with sr.Microphone(device_index=2) as source:
+    with device as source:
         if(ask):
             audio_playback(ask)
         audio = r.listen(source,phrase_time_limit=4) #odposlech z mikrofonu
