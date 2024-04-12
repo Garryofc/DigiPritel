@@ -223,7 +223,7 @@ def audio_playback(text, talking_queue):
     language = 'cs'#jazyk hlasové výslovnosti
     voice = gTTS(text=text, lang=language) #vytvoření hlasového modelu
     voice.save("Voice.mp3") # uložení hlasového modelu
-    song = AudioSegment.from_mp3("explosion.wav")
+    song = AudioSegment.from_mp3("Voice.mp3")
     talking_queue.put(True)
     play(song)
     print(1)
