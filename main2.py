@@ -1,5 +1,5 @@
-import os
-os.system("pip install pygobject")
+from pydub import AudioSegment
+from pydub.playback import play
 import pyaudio
 import nltk
 import ssl
@@ -8,7 +8,6 @@ from gtts import gTTS
 import pygame
 from multiprocessing import Process, Queue
 import math
-import playsound
 from nltk.stem import WordNetLemmatizer
 import random
 from openai import OpenAI
@@ -224,8 +223,9 @@ def audio_playback(text, talking_queue):
     language = 'cs'#jazyk hlasové výslovnosti
     voice = gTTS(text=text, lang=language) #vytvoření hlasového modelu
     voice.save("Voice.mp3") # uložení hlasového modelu
+    song = AudioSegment.from_mp3("explosion.wav")
     talking_queue.put(True)
-    playsound.playsound("Voice.mp3") #přehrání hlasového modelu
+    play(song)
     print(1)
     talking_queue.put(False)
     print(2)
