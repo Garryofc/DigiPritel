@@ -259,7 +259,7 @@ def execute_voice_command(text, talking_queue): #zařizuje možnost odpovědí h
 def kripl(talking_queue):
     while True:
         if config.VOICE == True:
-            command = "ahoj, jak se máš?"
+            command = voice_command_processor()
             execute_voice_command(command, talking_queue)
         elif config.VOICE == False:
             message = input('[?] >> ')
